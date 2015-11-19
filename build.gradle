@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.ratpack:ratpack-gradle:1.1.1"
+    }
+}
+
+apply plugin: "io.ratpack.ratpack-groovy"
+apply plugin: "idea"
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    runtime "org.slf4j:slf4j-simple:1.7.12"
+}
+
