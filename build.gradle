@@ -1,22 +1,10 @@
-apply plugin: 'java'
-apply plugin: 'groovy'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath "io.ratpack:ratpack-gradle:1.1.1"
-        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.2'
-    }
+plugins {
+    id "io.ratpack.ratpack-groovy" version "1.0.0"
+    id "com.github.johnrengelman.shadow" version "1.2.2"
+    id "idea"
+    id "eclipse"
+    id "groovy"
 }
-
-apply plugin: "idea"
-apply plugin: "io.ratpack.ratpack-groovy"
-apply plugin: 'com.github.johnrengelman.shadow'
 
 repositories {
     mavenCentral()
@@ -24,8 +12,24 @@ repositories {
 }
 
 dependencies {
+    compile "com.github.groovy-wslite:groovy-wslite:1.1.0"
     runtime "org.slf4j:slf4j-simple:1.7.12"
+    //springloaded "org.springframework:springloaded:1.2.0.RELEASE"
 
-    compile ratpack.dependency("jackson")
+    //compile ratpack.dependency("jackson")
 }
 
+
+idea {
+    project {
+        jdkName "1.8"
+        languageLevel "1.8"
+        ipr {
+            withXml { provider ->
+                def node = provider.asNode()
+                //configure git support for the project in idea
+                node.component.find { it.'@name' == 'VcsDirectoryMappings' }?.mapping[0].'@vcs' = 'Git'
+            }
+        }
+    }
+}
