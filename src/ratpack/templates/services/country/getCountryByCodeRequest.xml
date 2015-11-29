@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.webserviceX.NET">
-    <SOAP-ENV:Body>
-        <ns1:GetCountryByCountryCode>
-            <ns1:CountryCode>FR</ns1:CountryCode>
-        </ns1:GetCountryByCountryCode>
-    </SOAP-ENV:Body>
-</SOAP-ENV:Envelope>
